@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import "./estilo.css";
 
 class ListadeCategorias extends Component {
-
+  
   _handleEventoInput(e) {
     // console.log(e.key)
-    if(e.key == "Enter") {
+    if (e.key == "Enter") { // CHECKME: === em vez de ==?
       console.log("Categoria adicionada!")
+      const valorCategoria = e.target.value;
+      this.props.adicionarCategoria(valorCategoria)
     }
   }
 
@@ -14,9 +16,12 @@ class ListadeCategorias extends Component {
     return (
       <section className="lista-categorias">
         <ul className="lista-categorias_lista">
-          {this.props.categorias.map((categoria) => {
+          {this.props.categorias.map((categoria, index) => {
             return (
-              <li className="lista-categorias_item">
+              <li
+                key={index}
+                className="lista-categorias_item"
+              >
                 {categoria}
               </li>
             )

@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       notas: [],
-      categorias: ["Categoria I", "Categoria II"] // Esvaziar o array depois de testar
+      categorias: ["Trabalho", "Esportes"] // Esvaziar o array depois de testar
     }
   }
 
@@ -30,25 +30,22 @@ class App extends Component {
     this.setState({ notas: arrayNotas })
   }
 
-  criarCategoria(texto) {
-    const novaCategoria = { texto }
-    const novoArrayCategorias = [...this.state.categorias, novaCategoria]
-    const novoEstadoCategorias = {
-      categorias: novoArrayCategorias
-    }
-    this.setState(novoEstadoCategorias)
+  adicionarCategoria(nomeCategoria) {
+    const novoArrayCategorias = [...this.state.categorias, nomeCategoria]
+    const novoEstado = {...this.state, categorias: novoArrayCategorias}
+    this.setState(novoEstado)
   }
 
   render() {
     return (
       <section className="conteudo">
-        <FormularioCadastro 
-          criarNota={this.criarNota.bind(this)} 
-          criarCategoria={this.criarCategoria.bind(this)}
+        <FormularioCadastro
+          criarNota={this.criarNota.bind(this)}
         />
         <main className="conteudo-principal">
           <ListadeCategorias
             categorias={this.state.categorias}
+            adicionarCategoria={this.adicionarCategoria.bind(this)}
           />
           <ListaDeNotas
             notas={this.state.notas}
