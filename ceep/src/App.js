@@ -10,13 +10,17 @@ class App extends Component {
     super()
 
     this.state = {
-      notas: [],
-      categorias: ["Trabalho", "Esportes"] // Esvaziar o array depois de testar
+      notas: [{
+        titulo: "Título", // apagar
+        texto: "Conteúdo da nota", // apagar
+        categoria: "Sem Categoria" // apagar
+      }],
+      categorias: ["Games", "Música"] // Esvaziar o array depois de testar
     }
   }
 
-  criarNota(titulo, texto) {
-    const novaNota = { titulo, texto }
+  criarNota(titulo, texto, categoria) {
+    const novaNota = { titulo, texto, categoria }
     const novoArrayNotas = [...this.state.notas, novaNota]
     const novoEstado = {
       notas: novoArrayNotas
@@ -41,6 +45,7 @@ class App extends Component {
       <section className="conteudo">
         <FormularioCadastro
           criarNota={this.criarNota.bind(this)}
+          categorias={this.state.categorias}
         />
         <main className="conteudo-principal">
           <ListadeCategorias

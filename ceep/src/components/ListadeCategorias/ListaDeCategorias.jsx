@@ -15,6 +15,7 @@ class ListadeCategorias extends Component {
   render() {
     return (
       <section className="lista-categorias">
+        <h1 className="lista-categorias_lista">Categorias:</h1>
         <ul className="lista-categorias_lista">
           {this.props.categorias.map((categoria, index) => {
             return (
@@ -22,7 +23,7 @@ class ListadeCategorias extends Component {
                 key={index}
                 className="lista-categorias_item"
               >
-                {categoria}
+                #{categoria}
               </li>
             )
           })}
