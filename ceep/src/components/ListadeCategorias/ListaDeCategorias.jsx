@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./estilo.css";
 
 class ListadeCategorias extends Component {
-  
+
   _handleEventoInput(e) {
     // console.log(e.key)
     if (e.key == "Enter") { // CHECKME: === em vez de ==?
@@ -27,10 +27,7 @@ class ListadeCategorias extends Component {
               </li>
             )
           })}
-          {/* <li className="lista-categorias_item">Categorias</li>
-          <li className="lista-categorias_item">Categorias</li>
-          <li className="lista-categorias_item">Categorias</li>
-          <li className="lista-categorias_item">Categorias</li> */}
+
         </ul>
 
         <input
