@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import "./estilo.css";
 
 class ListadeCategorias extends Component {
+  constructor() {
+    super()
+    this.state = { categorias: [] }
+  }
+
+  componentDidMount() {
+    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+  }
+
+  _novasCategorias(categorias) {
+    console.log(categorias)
+    this.setState({...this.state, categorias})
+  }
 
   _handleEventoInput(e) {
     // console.log(e.key)
-    if (e.key == "Enter") { // CHECKME: === em vez de ==?
+    if (e.key == "Enter") { //CHECKME: === em vez de ==?
       console.log("Categoria adicionada!")
       const valorCategoria = e.target.value;
       this.props.adicionarCategoria(valorCategoria)
@@ -17,7 +30,7 @@ class ListadeCategorias extends Component {
       <section className="lista-categorias">
         <h1 className="lista-categorias_lista">Categorias:</h1>
         <ul className="lista-categorias_lista">
-          {this.props.categorias.map((categoria, index) => {
+          {this.state.categorias.map((categoria, index) => {
             return (
               <li
                 key={index}
